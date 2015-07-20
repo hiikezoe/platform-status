@@ -12,6 +12,6 @@ module.exports = function(grunt) {
       }
     }
 
-    grunt.file.write('converted_features.json', JSON.stringify(converted_features));
+    grunt.file.write('modules/converted_features.json', JSON.stringify(converted_features));
   });
 };
