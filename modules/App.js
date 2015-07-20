@@ -7,22 +7,32 @@ require('./App.css');
 var FEATURES = require('./converted_features.json');
 
 const FilterableFeatureTable = React.createClass({
+  foo(bar) {
+    return [...new Set(bar)].map((name) => {
+      return {
+        name,
+        checked: true
+      }
+    })
+  },
+
   getInitialState() {
     return {
-      filterText: ''
+      filterText: '',
+      categories: this.foo(this.props.features.map(
+        (feature) => (feature.category))
+      ),
+      statuses: this.foo(this.props.features.map(
+        (feature) => (feature.status))
+      )
     }
   },
 
   handleSearchInput(filterText) {
-    this.setState({
-      filterText
-    })
+    this.setState({filterText})
   },
 
   render() {
-    const categories = [...new Set(this.props.features.map((feature) => (feature.category)))];
-    const statuses = [...new Set(this.props.features.map((feature) => (feature.status)))];
-
     const filterText = this.state.filterText.toLowerCase();
     const features = this.props.features.filter((feature) => {
       return feature.name.toLowerCase().includes(filterText);
@@ -37,8 +47,8 @@ const FilterableFeatureTable = React.createClass({
         <div className="foo">
           <FeatureTable features={features} />
           <div>
-            <FilterBox name="Categories" list={categories} />
-            <FilterBox name="Status" list={statuses} />
+            <FilterBox name="Categories" list={this.state.categories} />
+            <FilterBox name="Status" list={this.state.statuses} />
           </div>
         </div>
       </div>
@@ -68,10 +78,10 @@ const FilterBox = React.createClass({
 
   render() {
     const rows = this.props.list.map((value) => (
-      <li key={value}>
+      <li key={value.name}>
         <label>
-          <input type="checkbox" />
-          {value}
+          <input type="checkbox" checked={value.checked} />
+          {value.name}
         </label>
       </li>
       )
