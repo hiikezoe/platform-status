@@ -33,7 +33,7 @@ const SearchBar = React.createClass({
 const CategoryFilter = React.createClass({
   render() {
     const rows = this.props.categories.map((category) => (
-      <label>
+      <label key={category}>
         <input type="checkbox" />
         {category}
       </label>
@@ -48,7 +48,7 @@ const CategoryFilter = React.createClass({
 const StatusFilter = React.createClass({
   render() {
     const rows = this.props.statuses.map((status) => (
-      <label>
+      <label key={status}>
         <input type="checkbox" />
         {status}
       </label>
@@ -63,7 +63,7 @@ const StatusFilter = React.createClass({
 const FeatureTable = React.createClass({
   render() {
     var rows = this.props.features.map((feature) => {
-      return (<FeatureRow feature={feature} />)
+      return (<FeatureRow key={feature.name} feature={feature} />)
     });
     return (
       <ul>
