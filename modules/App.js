@@ -13,9 +13,13 @@ const FilterableFeatureTable = React.createClass({
     return (
       <div>
         <SearchBar />
-        <CategoryFilter categories={categories} />
-        <StatusFilter statuses={statuses} />
-        <FeatureTable features={this.props.features} />
+        <div className="foo">
+          <FeatureTable features={this.props.features} />
+          <div>
+            <FilterBox name="Categories" list={categories} />
+            <FilterBox name="Status" list={statuses} />
+          </div>
+        </div>
       </div>
     )
   }
@@ -30,32 +34,22 @@ const SearchBar = React.createClass({
   }
 });
 
-const CategoryFilter = React.createClass({
+const FilterBox = React.createClass({
   render() {
-    const rows = this.props.categories.map((category) => (
-      <label key={category}>
-        <input type="checkbox" />
-        {category}
-      </label>
+    const rows = this.props.list.map((value) => (
+      <li key={value}>
+        <label>
+          <input type="checkbox" />
+          {value}
+        </label>
+      </li>
       )
     );
     return (
-      <div>{rows}</div>
-    );
-  }
-});
-
-const StatusFilter = React.createClass({
-  render() {
-    const rows = this.props.statuses.map((status) => (
-      <label key={status}>
-        <input type="checkbox" />
-        {status}
-      </label>
-      )
-    );
-    return (
-      <div>{rows}</div>
+      <section>
+        <h1>{this.props.name}</h1>
+        <ul>{rows}</ul>
+      </section>
     );
   }
 });
