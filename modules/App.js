@@ -7,22 +7,19 @@ require('./App.css');
 var FEATURES = require('./converted_features.json');
 
 const FilterableFeatureTable = React.createClass({
-  foo(bar) {
+  setCheckedDefault(bar) {
     return [...new Set(bar)].map((name) => {
-      return {
-        name,
-        checked: true
-      }
+      return {name, checked: true}
     })
   },
 
   getInitialState() {
     return {
       filterText: '',
-      categories: this.foo(this.props.features.map(
+      categories: this.setCheckedDefault(this.props.features.map(
         (feature) => (feature.category))
       ),
-      statuses: this.foo(this.props.features.map(
+      statuses: this.setCheckedDefault(this.props.features.map(
         (feature) => (feature.status))
       )
     }
@@ -32,10 +29,29 @@ const FilterableFeatureTable = React.createClass({
     this.setState({filterText})
   },
 
+  handleFilterInput({filterName, name, checked}) {
+    let stateFilterName = filterName == 'Category' ? 'categories' : 'statuses';
+    let newState = this.state[stateFilterName].map(({name: prevName, checked: prevChecked}) => {
+      if (prevName == name) {
+        return {name, checked};
+      }
+      return {name: prevName, checked: prevChecked};
+    });
+    this.setState({[`${stateFilterName}`]: newState});
+  },
+
   render() {
     const filterText = this.state.filterText.toLowerCase();
     const features = this.props.features.filter((feature) => {
       return feature.name.toLowerCase().includes(filterText);
+    }).filter((feature) => {
+      return this.state.categories.find(({name: category, checked}) => {
+        return checked && feature.category == category;
+      });
+    }).filter((feature) => {
+      return this.state.statuses.find(({name: status, checked}) => {
+        return checked && feature.status == status;
+      });
     });
 
     return (
@@ -47,8 +63,16 @@ const FilterableFeatureTable = React.createClass({
         <div className="foo">
           <FeatureTable features={features} />
           <div>
-            <FilterBox name="Categories" list={this.state.categories} />
-            <FilterBox name="Status" list={this.state.statuses} />
+            <FilterBox
+              filterName="Category"
+              list={this.state.categories}
+              onUserInput={this.handleFilterInput}
+            />
+            <FilterBox
+              filterName="Status"
+              list={this.state.statuses}
+              onUserInput={this.handleFilterInput}
+            />
           </div>
         </div>
       </div>
@@ -57,8 +81,8 @@ const FilterableFeatureTable = React.createClass({
 });
 
 const SearchBar = React.createClass({
-  handleChange() {
-    this.props.onUserInput(this.refs.filterTextInput.getDOMNode().value);
+  handleChange(evt) {
+    this.props.onUserInput(evt.target.value);
   },
 
   render() {
@@ -66,7 +90,6 @@ const SearchBar = React.createClass({
       <input
         placeholder="filter…"
         value={this.props.filterText}
-        ref="filterTextInput"
         onChange={this.handleChange}
       />
     );
@@ -76,11 +99,24 @@ const SearchBar = React.createClass({
 const FilterBox = React.createClass({
   mixins: [PureRenderMixin],
 
+  handleChange(evt) {
+    this.props.onUserInput({
+      filterName: this.props.filterName,
+      name: evt.target.name,
+      checked: evt.target.checked
+    });
+  },
+
   render() {
     const rows = this.props.list.map((value) => (
       <li key={value.name}>
         <label>
-          <input type="checkbox" checked={value.checked} />
+          <input
+            type="checkbox"
+            name={value.name}
+            checked={value.checked}
+            onChange={this.handleChange}
+          />
           {value.name}
         </label>
       </li>
@@ -88,7 +124,7 @@ const FilterBox = React.createClass({
     );
     return (
       <section>
-        <h1>{this.props.name}</h1>
+        <h1>{this.props.filterName}</h1>
         <ul>{rows}</ul>
       </section>
     );
