@@ -2,7 +2,11 @@ body {
   font-family: sans-serif;
 }
 
-.foo {
+.hbox {
   display: flex;
   flex-direction: horizontal;
+}
+
+.flex {
+  flex: 1;
 }

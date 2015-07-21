@@ -60,7 +60,7 @@ const FilterableFeatureTable = React.createClass({
           filterText={this.state.filterText}
           onUserInput={this.handleSearchInput}
         />
-        <div className="foo">
+        <div className="hbox">
           <FeatureTable features={features} />
           <div>
             <FilterBox
@@ -125,7 +125,9 @@ const FilterBox = React.createClass({
     return (
       <section>
         <h1>{this.props.filterName}</h1>
-        <ul>{rows}</ul>
+        <ul>
+          {rows}
+        </ul>
       </section>
     );
   }
@@ -139,7 +141,7 @@ const FeatureTable = React.createClass({
       return (<FeatureRow key={feature.name} feature={feature} />)
     });
     return (
-      <ul>
+      <ul className="flex">
         {rows}
       </ul>
     )
