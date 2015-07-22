@@ -6,12 +6,12 @@
       "status": "in progress|favorable|not favorable|no opinion",
       "description": "",
       "urls": {
-        "bugzilla": "",
+        "bugzilla": "https://bugzilla.mozilla.org/show_bug.cgi?id=747754",
         "documentation": "",
-        "specification": ""
+        "specification": "http://dev.w3.org/csswg/css-device-adapt/"
       }
     },
-    {
+    {c
       "name": "CSS Intrinsic Sizing",
       "contact": "",
       "status": "in progress|favorable|not favorable|no opinion",
@@ -72,9 +72,9 @@
       "status": "in progress|favorable|not favorable|no opinion",
       "description": "",
       "urls": {
-        "bugzilla": "",
+        "bugzilla": "https://bugzilla.mozilla.org/show_bug.cgi?id=684062",
         "documentation": "",
-        "specification": ""
+        "specification": "http://www.w3.org/TR/css3-multicol/"
       }
     },
     {
@@ -83,9 +83,9 @@
       "status": "in progress|favorable|not favorable|no opinion",
       "description": "",
       "urls": {
-        "bugzilla": "",
+        "bugzilla": "https://bugzilla.mozilla.org/show_bug.cgi?id=1040714",
         "documentation": "",
-        "specification": ""
+        "specification": "http://dev.w3.org/csswg/css-shapes/"
       }
     },
     {
@@ -94,9 +94,9 @@
       "status": "in progress|favorable|not favorable|no opinion",
       "description": "",
       "urls": {
-        "bugzilla": "",
+        "bugzilla": "https://bugzilla.mozilla.org/show_bug.cgi?id=616605",
         "documentation": "",
-        "specification": ""
+        "specification": "http://dev.w3.org/csswg/css-grid/"
       }
     },
     {
@@ -215,9 +215,9 @@
       "status": "favorable",
       "description": "L. David Baron <dbaron@dbaron.org>",
       "urls": {
-        "bugzilla": "",
+        "bugzilla": "https://bugzilla.mozilla.org/show_bug.cgi?id=1105570",
         "documentation": "",
-        "specification": ""
+        "specification": "http://dev.w3.org/csswg/css-align/"
       }
     },
     {
@@ -226,9 +226,9 @@
       "status": "favorable",
       "description": "",
       "urls": {
-        "bugzilla": "",
+        "bugzilla": "https://bugzilla.mozilla.org/show_bug.cgi?id=674804",
         "documentation": "",
-        "specification": ""
+        "specification": "http://dev.w3.org/csswg/css3-exclusions/"
       }
     },
     {
@@ -237,9 +237,9 @@
       "status": "in progress|favorable|not favorable|no opinion",
       "description": "",
       "urls": {
-        "bugzilla": "",
+        "bugzilla": "https://bugzilla.mozilla.org/show_bug.cgi?id=686281",
         "documentation": "",
-        "specification": ""
+        "specification": "http://dev.w3.org/fxtf/masking/"
       }
     },
     {
@@ -590,9 +590,9 @@
       "status": "in progress|favorable|not favorable|no opinion",
       "description": "",
       "urls": {
-        "bugzilla": "",
+        "bugzilla": "https://bugzilla.mozilla.org/show_bug.cgi?id=935216",
         "documentation": "",
-        "specification": ""
+        "specification": "https://github.com/igrigorik/http-client-hints"
       }
     },
     {
@@ -627,9 +627,9 @@
       "status": "in progress|favorable|not favorable|no opinion",
       "description": "",
       "urls": {
-        "bugzilla": "",
+        "bugzilla": "https://bugzilla.mozilla.org/show_bug.cgi?id=1165796",
         "documentation": "",
-        "specification": ""
+        "specification": "http://w3c.github.io/performance-timeline/"
       }
     },
     {
@@ -778,9 +778,9 @@
       "status": "planned, details to be sorted",
       "description": "",
       "urls": {
-        "bugzilla": "",
+        "bugzilla": "https://bugzilla.mozilla.org/show_bug.cgi?id=889230",
         "documentation": "",
-        "specification": ""
+        "specification": "https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/custom/index.html"
       }
     },
     {
