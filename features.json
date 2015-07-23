@@ -11,7 +11,7 @@
         "specification": "http://dev.w3.org/csswg/css-device-adapt/"
       }
     },
-    {c
+    {
       "name": "CSS Intrinsic Sizing",
       "contact": "",
       "status": "in progress|favorable|not favorable|no opinion",
