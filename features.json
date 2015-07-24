@@ -211,9 +211,9 @@
     },
     {
       "name": "CSS Box Alignment",
-      "contact": "",
+      "contact": "L. David Baron <dbaron@dbaron.org>",
       "status": "favorable",
-      "description": "L. David Baron <dbaron@dbaron.org>",
+      "description": "",
       "urls": {
         "bugzilla": "https://bugzilla.mozilla.org/show_bug.cgi?id=1105570",
         "documentation": "",
